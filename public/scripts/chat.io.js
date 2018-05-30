@@ -179,7 +179,7 @@
 			// announce a welcome message
             $('.chat-messages ul').empty();
 
-			insertMessage(serverDisplayName, 'Welcome to the room: `' + data.room + '`... enjoy!', true, false, true,true);
+			insertMessage(serverDisplayName, 'Bienvenido a la sala: `' + data.room, true, false, true,true);
 			$('.chat-clients ul').empty();
 			
 			// add the clients to the clients list
@@ -231,7 +231,7 @@
 			$.tmpl(tmplt.room, { room: name }).appendTo('.chat-rooms ul');
 			// if announce is true, show a message about this room
 			if(announce){
-				insertMessage(serverDisplayName, 'The room `' + name + '` created...', true, false, true,true);
+				insertMessage(serverDisplayName, 'La sala `' + name + '`ha sido creada', true, false, true,true);
 			}
 		}
 	}
@@ -241,7 +241,7 @@
 		$('.chat-rooms ul li[data-roomId="' + name + '"]').remove();
 		// if announce is true, show a message about this room
 		if(announce){
-			insertMessage(serverDisplayName, 'The room `' + name + '` destroyed...', true, false, true,true);
+			insertMessage(serverDisplayName, 'La sala' + name + ' ha sido destruida', true, false, true,true);
 		}
 	}
 
@@ -256,7 +256,7 @@
 
 		// if announce is true, show a message about this client
 		if(announce){
-			insertMessage(serverDisplayName, client.nickname + ' has joined the room...', true, false, true,true);
+			insertMessage(serverDisplayName, client.nickname + ' se ha unido a la sala', true, false, true,true);
 		}
 		$html.appendTo('.chat-clients ul')
 	}
@@ -267,7 +267,7 @@
 		
 		// if announce is true, show a message about this room
 		if(announce){
-			insertMessage(serverDisplayName, client.nickname + ' has left the room...', true, false, true,true);
+			insertMessage(serverDisplayName, client.nickname + ' dejó la sala', true, false, true,true);
 		}
 	}
 
@@ -388,7 +388,7 @@
 	// in order to init the connection with the server
 	function connect(){
 		// show connecting message
-		$('.chat-shadow .content').html('Connecting...');
+		$('.chat-shadow .content').html('Conectando...');
 		
 		// creating the connection and saving the socket
 		socket = io.connect(socketUrl);
