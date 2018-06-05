@@ -22,7 +22,7 @@
 			<div class="pr center wrapper">
 				<div class="cf pr chat animate">
 					<div class="pa chat-shadow">
-						<div class="content animate bounceInDown">Click <div class="big-button-green start">Empezar</div></div>
+						<div id="buttonStart" class="content animate bounceInDown"><div class="big-button-green start">Iniciar</div></div>
 					</div>
 					<div class="cf chat-top">
 						<div class="fl chat-left">
@@ -61,8 +61,10 @@
 		
 		<aside id="nickname-popup" class="popup animate avgrund-popup">
 			<div class="title">Ingresa un nombre</div>
-			<div class="content">El nombre no debe superar los 15 caracteres</div>
-			<div class="input"><input type="text" maxlength="15"/></div>
+			<div class="content">El nombre no debe superar los 20 caracteres</div>
+			<!--<div class="input"><input type="text" maxlength="20"/></div>-->
+			<div class="input"><input id="username" type="text" maxlength="20" placeholder="Nombre de usuario"/></div>
+			<div class="input"><input id="password" type="password" maxlength="20" placeholder="Contraseña"/></div>
 			<div class="big-button-green small begin">Entrar</div>
 		</aside>
 		<aside id="addroom-popup" class="popup animate avgrund-popup">
@@ -80,7 +82,6 @@
 		<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 		<script type="text/javascript" src="/scripts/avgrund.js"></script>
 		<script type="text/javascript" src="/scripts/chat.io.js"></script>
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 		<script type="text/javascript">
 		  (function() {
 		    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;

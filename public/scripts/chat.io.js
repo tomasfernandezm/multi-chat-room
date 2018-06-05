@@ -307,11 +307,12 @@
 	// save the client nickname and start the chat by
 	// calling the 'connect()' function
 	function handleNickname(){
-		var nick = $('#nickname-popup .input input').val().trim();
+		var nick = $('#nickname-popup .input #username').val().trim();
 		if(nick && nick.length <= NICK_MAX_LENGTH){
 			nickname = nick;
 			Avgrund.hide();
-			connect();
+			auth();
+			// connect();
 		} else {
 			shake('#nickname-popup', '#nickname-popup .input input', 'tada', 'yellow');
 			$('#nickname-popup .input input').val('');
@@ -397,9 +398,38 @@
 		bindSocketEvents();
 	}
 
+	function auth(){
+		const username = document.getElementById('username').value;
+		const password = document.getElementById('password').value;
+		const url = 'https://4t3kvwxl1j.execute-api.us-east-2.amazonaws.com/prod';
+		const user = {user: 'austral', password: password};
+        document.getElementById('buttonStart').setAttribute('hidden', 'true');
+		console.log(user);
+		post(url, user).then( function(res) {
+			if(res){
+				connect();
+			} else {
+                document.getElementById('buttonStart').removeAttribute('hidden');
+				console.log(res);
+			}
+		});
+
+	}
+
 	// on document ready, bind the DOM elements to events
 	$(function(){
 		bindDOMEvents();
 	});
+
+    function post(url, user){
+        return fetch(url, {
+            method: 'post',
+            body: JSON.stringify(user)
+        }).then(function(response) {
+            return response.json()
+        }).catch(function(err) {
+            console.log('Fetch Error', err);
+        });
+    }
 
 })(jQuery);
