@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+
+  redis:
+    image: redis
+    container_name: "redis"
+    ports:
+      - "6379:6379"
+
+  chat:
+    image: chat
+    container_name: "chat"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/src/app
+    env_file: env
+
+networks:
+  default:
+    external:
+      name: chat_network
