@@ -4,8 +4,6 @@ services:
 
   redis:
     image: redis
-    volumes:
-      - ./redis.conf:/usr/local/etc/redis/redis.conf
 
   chat:
     image: chat
@@ -18,10 +16,6 @@ services:
     volumes:
       - .:/usr/src/app
     env_file: env
-
-  ruby:
-    image: ruby
-
 
 networks:
   default:
