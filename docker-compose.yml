@@ -4,6 +4,7 @@ services:
 
   redis:
     image: redis
+    container_name: "redis"
 
   chat:
     image: tomfernandez/redis_chat
