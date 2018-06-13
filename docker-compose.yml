@@ -9,13 +9,8 @@ services:
   chat:
     image: tomfernandez/redis_chat
     container_name: "chat"
-    build:
-      context: .
-      dockerfile: Dockerfile
     ports:
-      - "8082:8080"
-    volumes:
-      - .:/usr/src/app
+      - "8080:8080"
     environment:
       SOCKET_URL: 192.168.99.100
       SOCKET_PORT: 8082
@@ -27,13 +22,8 @@ services:
   chat_1:
     image: tomfernandez/redis_chat
     container_name: "chat_1"
-    build:
-      context: .
-      dockerfile: Dockerfile
     ports:
       - "8081:8080"
-    volumes:
-      - .:/usr/src/app
     environment:
       SOCKET_URL: 192.168.99.100
       SOCKET_PORT: 8081
